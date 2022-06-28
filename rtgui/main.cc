@@ -368,8 +368,7 @@ void show_gimp_plugin_info_dialog(Gtk::Window *parent)
 
 int main (int argc, char **argv)
 {
-    setlocale (LC_ALL, "");
-    setlocale (LC_NUMERIC, "C"); // to set decimal point to "."
+    uselocale (newlocale(LC_NUMERIC_MASK, "C", (locale_t) 0));
 
     simpleEditor = false;
     gimpPlugin = false;

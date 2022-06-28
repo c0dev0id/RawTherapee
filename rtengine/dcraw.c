@@ -9853,8 +9853,7 @@ int CLASS main (int argc, const char **argv)
   putenv ((char *) "TZ=UTC");
 #endif
 #ifdef LOCALEDIR
-  setlocale (LC_CTYPE, "");
-  setlocale (LC_MESSAGES, "");
+  uselocale (newlocale(LC_CTYPE_MASK | LC_MESSAGES, "", duplocale(LC_GLOBAL_LOCALE)));
   bindtextdomain ("dcraw", LOCALEDIR);
   textdomain ("dcraw");
 #endif

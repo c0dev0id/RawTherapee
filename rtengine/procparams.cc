@@ -7606,7 +7606,8 @@ int ProcParams::save(const Glib::ustring& fname, const Glib::ustring& fname2, bo
 
 int ProcParams::load(const Glib::ustring& fname, ParamsEdited* pedited)
 {
-    setlocale(LC_NUMERIC, "C");  // to set decimal point to "."
+    // to set decimal point to "."
+    uselocale(newlocale(LC_NUMERIC_MASK, "C", duplocale(LC_GLOBAL_LOCALE)));
 
     if (fname.empty()) {
         return 1;

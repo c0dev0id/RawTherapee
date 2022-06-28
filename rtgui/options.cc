@@ -712,7 +712,7 @@ void Options::filterOutParsedExtensions()
 
 void Options::readFromFile(Glib::ustring fname)
 {
-    setlocale(LC_NUMERIC, "C");  // to set decimal point to "."
+    uselocale(newlocale(LC_NUMERIC_MASK, "C", duplocale(LC_GLOBAL_LOCALE)));
 
     Glib::KeyFile keyFile;
 

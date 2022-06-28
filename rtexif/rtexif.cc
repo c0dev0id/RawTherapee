@@ -2814,7 +2814,8 @@ void ExifManager::parse (bool isRaw, bool skipIgnored, bool parseJpeg)
         #endif
         return;
     }
-    setlocale (LC_NUMERIC, "C"); // to set decimal point in sscanf
+    // to set decimal point in sscanf
+    uselocale (newlocale(LC_NUMERIC_MASK, "C", duplocale(LC_GLOBAL_LOCALE)));
 
     if (order == ByteOrder::UNKNOWN) {
         // read tiff header
